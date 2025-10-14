@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+z<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,7 @@
 </head>
 <body>
   
+
 <div class="header">
    <div class="title-container">
       <h1 class="title">
@@ -23,29 +24,85 @@
 </section>
 
 <section class="project-area">
+
 <svg class="animated-line" width="100%" height="100" viewBox="0 0 20 20" preserveAspectRatio="none">
   <path d="M0 10 L4 10 L6 18 L18 20" stroke="white" stroke-width="0.5" fill="none" />
 </svg>
-<div class="grid grid-cols-3 gap-4" >
-    <div class="cardWrap">
+
+<h2 class="text-5xl md:text-6xl font-black mb-8 text-center">
+  PROJECT<span style="color: hsl(var(--primary));">_LIBRARY</span>
+</h2>
+
+<div class="filter-controls">
+  <select id="type-filter">
+    <option value="All">All Types</option>
+    <option value="Web App">Web App</option>
+    <option value="Illustration">Illustration</option>
+    <option value="3D Model">3D Model</option>
+    <option value="Game">Game</option>
+    <option value="Animation">Animation</option>
+  </select>
+  <select id="tool-filter">
+    <option value="All">All Tools</option>
+    <option value="HTML">HTML</option>
+    <option value="CSS">CSS</option>
+    <option value="JS">JS</option>
+    <option value="Photoshop">Photoshop</option>
+    <option value="Blender">Blender</option>
+    <option value="Unity">Unity</option>
+    <option value="After Effects">After Effects</option>
+  </select>
+  <select id="sort-select">
+    <option value="date-desc">Newest First</option>
+    <option value="date-asc">Oldest First</option>
+    <option value="name">Name (A-Z)</option>
+  </select>
+  <button id="clear-filters">Clear Filters</button>
+</div>
+
+<div class="grid" id="projects-grid">
+    <div class="cardWrap" data-type="Web App" data-tools="HTML,CSS,JS" data-date="2017-12-07">
     <div class="card" id ="Project-1">
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="fakeimg" style="height:200px; background-image: url('images/photo1.png'); background-size: cover;"></div>
       <h3>The Butler</h3>
-      <h5>Title description, Dec 7, 2017</h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <a href="projects\PJ1.html" class="info-link">Project-Details</a>
+      <h5>Web application for butler services, Dec 7, 2017</h5>
+      <a href="projects/PJ1.html" class="info-link">Project-Details</a>
     </div>
   </div>
 
-  <div class="cardWrap">
+  <div class="cardWrap" data-type="Illustration" data-tools="Photoshop" data-date="2017-12-07">
     <div class="card">
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="fakeimg" style="height:200px; background-image: url('images/photo2.png'); background-size: cover;"></div>
       <h3>Guy</h3>
-      <h5>Title description, Dec 7, 2017</h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <a href="projects\PJ2.html" class="info-link">Project-Details</a>
+      <h5>Character illustration, Dec 7, 2017</h5>
+      <a href="projects/PJ2.html" class="info-link">Project-Details</a>
+    </div>
+  </div>
+
+    <div class="cardWrap" data-type="3D Model" data-tools="Blender" data-date="2017-12-07">
+    <div class="card">
+      <div class="fakeimg" style="height:200px; background-image: url('images/photo3.png'); background-size: cover;"></div>
+      <h3>Lego</h3>
+      <h5>3D Lego model, Dec 7, 2017</h5>
+      <a href="projects/PJ3.html" class="info-link">Project-Details</a>
+    </div>
+  </div>
+
+  <div class="cardWrap" data-type="Game" data-tools="Unity" data-date="2023-01-01">
+    <div class="card">
+      <div class="fakeimg" style="height:200px; background-image: url('images/photo4.png'); background-size: cover;"></div>
+      <h3>Space Adventure</h3>
+      <h5>Unity game project, Jan 1, 2023</h5>
+      <a href="projects/PJ4.html" class="info-link">Project-Details</a>
+    </div>
+  </div>
+
+  <div class="cardWrap" data-type="Animation" data-tools="After Effects" data-date="2023-06-15">
+    <div class="card">
+      <div class="fakeimg" style="height:200px; background-image: url('images/photo5.png'); background-size: cover;"></div>
+      <h3>Neon Explosion</h3>
+      <h5>Animated sequence, Jun 15, 2023</h5>
+      <a href="projects/PJ5.html" class="info-link">Project-Details</a>
     </div>
   </div>
 </div>

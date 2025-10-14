@@ -1,8 +1,4 @@
-# TODO: Edit Animated Line Bend
-
-## Steps to Complete
-- [x] Edit Home.html: Update the SVG path d attribute to increase the section between bends so the line goes lower (change to "M0 10 L4 10 L6 18 L18 20")
-- [x] Edit Home.html: Reduce stroke-width to 0.5 for a more digital look
-- [x] Edit Home-styles.css: Adjust stroke-dasharray to match the new path length (approx 24)
-- [ ] Add blink effect to the line after the dash animation completes, and stop when scrolling out
-- [ ] Test the animation by opening Home.html in a browser and scrolling to the project area to verify the changes
+- [x] Update Home-styles.css with neon/cyberpunk CSS variables and utilities from neon-circuits-folio/src/index.css
+- [ ] Modify Home.html project-area to include filter controls (type, tool, sort), expand grid to 5 cards, apply neon classes
+- [ ] Update Home-Script.js to include project data array, filtering/sorting logic, while keeping existing animation
+- [ ] Test the page for animations and filters
