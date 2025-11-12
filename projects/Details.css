@@ -234,8 +234,8 @@ main {
     border-radius: 10px;
     box-shadow: var(--glow);
     object-fit: scale-down;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     margin-left: 5rem;
 }
 
