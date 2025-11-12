@@ -76,8 +76,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Slide-in animation for project cards on scroll
+// Slideshow functionality
+let slideIndex = 0;
+
+function showSlides() {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return; // Exit if no slides found
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    slides[slideIndex - 1].classList.add('active');
+}
+
+function changeSlide(n) {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return; // Exit if no slides found
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex += n;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    if (slideIndex < 1) { slideIndex = slides.length; }
+    slides[slideIndex - 1].classList.add('active');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        slides[0].classList.add('active'); // Show first slide
+        setInterval(showSlides, 5000); // Auto-slide every 5 seconds
+    }
+
+    // Slide-in animation for project cards on scroll
     const librarySection = document.getElementById('library');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -96,5 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.1 // Trigger when 10% of the section is visible
     });
 
-    observer.observe(librarySection);
+    if (librarySection) {
+        observer.observe(librarySection);
+    }
 });
