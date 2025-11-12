@@ -233,7 +233,10 @@ main {
     border: 1px solid var(--border);
     border-radius: 10px;
     box-shadow: var(--glow);
-    object-fit: contain;
+    object-fit: scale-down;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
 }
 
 @media (max-width: 768px) {
