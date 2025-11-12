@@ -1,18 +1,24 @@
 /*
-  PIR Motion Sensor and Servo Control with State Machine
+  PIR Motion Sensor and Stepper Motor Control with State Machine
   States: BASE (90°), LEFT (0°), RIGHT (180°)
   Transitions based on PIR motion detection with checks and delays.
 */
 
-#include <Servo.h>
+#include <Stepper.h>
+#include <SoftwareSerial.h>
+#include <DFPlayerMini.h>
 
 // Define the pins
 int pirPinL = 2;    // Input pin for the PIR sensor
 int pirPinR = 3;    // Input pin for the PIR sensor
 int val1;              // Variable to read the sensor value
 int val2;
-Servo myservo;
-int servoPin = 9;
+Stepper myStepper(200, 8, 9, 10, 11);  // Stepper motor with 200 steps per revolution
+int currentAngle = 90;  // Track current angle
+
+// DFPlayer Mini
+SoftwareSerial mySerial(4, 5);  // RX, TX
+DFPlayerMini myDFPlayer;
 
 // State machine enum
 enum State { BASE, LEFT, RIGHT };
@@ -31,24 +37,41 @@ const unsigned long baseDelay = 5000;  // 5 seconds delay after returning to BAS
 void setup() {
   // Initialize serial communication for debugging
   Serial.begin(9600);
-  myservo.attach(servoPin);
-  myservo.write(90);
+  myStepper.setSpeed(60);  // Set stepper speed to 60 RPM
+  // Move to initial position (90°)
+  int steps = round(90.0 * 200.0 / 360.0);
+  myStepper.step(steps);
+
+  // Initialize DFPlayer Mini
+  mySerial.begin(9600);
+  if (myDFPlayer.begin(mySerial)) {
+    Serial.println("DFPlayer Mini online.");
+  } else {
+    Serial.println("DFPlayer Mini not found.");
+  }
+  myDFPlayer.volume(30);  // Set volume (0-30)
 }
 
 void loop() {
   unsigned long currentTime = millis();
 
-  // Update servo position based on state
+  // Update stepper position based on state
+  int targetAngle;
   switch (currentState) {
     case BASE:
-      myservo.write(90);
+      targetAngle = 90;
       break;
     case LEFT:
-      myservo.write(0);
+      targetAngle = 0;
       break;
     case RIGHT:
-      myservo.write(180);
+      targetAngle = 180;
       break;
+  }
+  int steps = round((targetAngle - currentAngle) * 200.0 / 360.0);
+  if (steps != 0) {
+    myStepper.step(steps);
+    currentAngle = targetAngle;
   }
 
   // State machine logic
@@ -72,6 +95,7 @@ void loop() {
           checkCounterL++;
           checkCounterR = 0;
           Serial.println("Motion detected on Left side! Counter L: " + String(checkCounterL));
+          myDFPlayer.play(1);  // Play sound for left motion
           if (checkCounterL >= 3) {
             currentState = LEFT;
             checkCounterL = 0;
@@ -81,6 +105,7 @@ void loop() {
           checkCounterR++;
           checkCounterL = 0;
           Serial.println("Motion detected on Right side! Counter R: " + String(checkCounterR));
+          myDFPlayer.play(1);  // Play sound for right motion
           if (checkCounterR >= 3) {
             currentState = RIGHT;
             checkCounterR = 0;
