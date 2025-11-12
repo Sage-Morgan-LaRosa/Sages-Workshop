@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sage's Techno Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="nav-container">
+                <h1 class="nav-title metal">Sage's Workshop</h1>
+                <ul class="nav-links">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#library">Library</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="about" class="about-me">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Welcome to my techno portfolio. I'm a creative developer specializing in web apps, illustrations, 3D models, games, and animations. Explore my projects below.</p>
+        </div>
+    </section>
+
+    <section id="library" class="library">
+        <div class="container">
+            <h2>Project Library</h2>
+            <div class="filters">
+                <select id="type-filter">
+                    <option value="all">All Types</option>
+                    <option value="web-app">Web App</option>
+                    <option value="illustration">Illustration</option>
+                    <option value="3d-model">3D Model</option>
+                </select>
+                <select id="software-filter">
+                    <option value="all">All Software</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="js">JavaScript</option>
+                    <option value="photoshop">Photoshop</option>
+                    <option value="blender">Blender</option>
+                </select>
+                <select id="date-filter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+                <button id="clear-filters">Clear Filters</button>
+            </div>
+            <div class="projects-grid" id="projects-grid">
+                <div class="project-card" data-type="web-app" data-software="html,css,js" data-date="2023-10-01">
+                    <img src="images/project1.jpg" alt="Project 1">
+                    <h3>Web App Project</h3>
+                    <p>A dynamic web application built with HTML, CSS, and JavaScript.</p>
+                    <a href="projects/project1.html" class="project-link">View Details</a>
+                </div>
+                <div class="project-card" data-type="illustration" data-software="photoshop" data-date="2023-09-15">
+                    <img src="images/project2.jpg" alt="Project 2">
+                    <h3>Digital Illustration</h3>
+                    <p>A stunning digital artwork created in Photoshop.</p>
+                    <a href="projects/project2.html" class="project-link">View Details</a>
+                </div>
+                <div class="project-card" data-type="3d-model" data-software="blender" data-date="2023-08-20">
+                    <img src="images/project3.jpg" alt="Project 3">
+                    <h3>3D Model</h3>
+                    <p>An intricate 3D model designed in Blender.</p>
+                    <a href="projects/project3.html" class="project-link">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sage's Workshop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

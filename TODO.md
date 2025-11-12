@@ -1,4 +1,0 @@
-- [x] Update Home-styles.css with neon/cyberpunk CSS variables and utilities from neon-circuits-folio/src/index.css
-- [ ] Modify Home.html project-area to include filter controls (type, tool, sort), expand grid to 5 cards, apply neon classes
-- [ ] Update Home-Script.js to include project data array, filtering/sorting logic, while keeping existing animation
-- [ ] Test the page for animations and filters
